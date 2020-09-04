@@ -1,4 +1,5 @@
 from room import Room
+from textwrap import TextWrapper
 
 # Declare all the rooms
 
@@ -38,6 +39,12 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+class Player:
+    def __init__(self, name, location = room["outside"]):
+        self.name = name
+        self.location = location
+
+Player_1 = Player("Mark", room["outside"])
 
 # Write a loop that:
 #
@@ -49,3 +56,18 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+def formatRoomDesc(description):
+    textwrapper = TextWrapper(50)
+    formatted_text = textwrapper.wrap(description)
+    return [print(text) for text in formatted_text]
+
+def game_loop():
+    print(Player_1.location.name)
+    formatRoomDesc(Player_1.location.desc)
+    
+    # Waiting For User Input
+    userInput = input("Choose a direction to walk in... \n")
+
+
+game_loop()
