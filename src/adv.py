@@ -62,7 +62,6 @@ def formatRoomDesc(description):
     return [print(text) for text in formatted_text]
 
 def movePlayer():
-    print(Player_1.location.name)
     # Waiting For User Input
     userInput = input("Choose a direction (N, E, W, or S) to walk in... \n").lower()
 
@@ -99,6 +98,7 @@ def movePlayer():
     return
 
 def game_loop():
+    print(Player_1.location.name)
     formatRoomDesc(Player_1.location.desc)
     movePlayer()
     game_loop()
